@@ -12,7 +12,7 @@ optimized for "object" streams, but still supporting text streams.
 
 ## Quick Example
 
-stat some files.
+Stat some files:
 
 ``` js
 pull.values(['file1', 'file2', 'file3'])
@@ -23,9 +23,7 @@ pull.values(['file1', 'file2', 'file3'])
 ```
 
 The best thing about pull-stream is that it can be completely lazy.
-this is perfect for async traversals where you might want to stop early.
-
-stat files recursively
+This is perfect for async traversals where you might want to stop early.
 
 ## Examples
 
