@@ -12,7 +12,7 @@ optimized for "object" streams, but still supporting text streams.
 
 ## Quick Example
 
-stat some files.
+Stat some files:
 
 ``` js
 pull.values(['file1', 'file2', 'file3'])
@@ -23,9 +23,7 @@ pull.values(['file1', 'file2', 'file3'])
 ```
 
 The best thing about pull-stream is that it can be completely lazy.
-this is perfect for async traversals where you might want to stop early.
-
-stat files recursively
+This is perfect for async traversals where you might want to stop early.
 
 ## Examples
 
@@ -111,10 +109,10 @@ are reader streams.
 var logger = pull.Sink(function (read) {
   read(null, function next(end, data) {
     if(end === true) return
-    if(end) throw err
+    if(end) throw end
 
     console.log(data)
-    readable(end, next)
+    read(null, next)
   })
 })
 ```
@@ -169,17 +167,14 @@ to add pipeability to your pull-streams.
 What if you could do this?
 
 ``` js
-var trippleThrough = 
+var tripleThrough =
   through1().pipe(through2()).pipe(through3())
 //THE THREE THROUGHS BECOME ONE
 
-source().pipe(trippleThrough).pipe(sink())
-
-//and then pipe it later!
+source().pipe(tripleThrough).pipe(sink())
 ```
 
 ## Design Goals & Rationale
-
 
 There is a deeper,
 [platonic abstraction](http://en.wikipedia.org/wiki/Platonic_idealism),
