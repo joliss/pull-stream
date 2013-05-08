@@ -109,10 +109,10 @@ are reader streams.
 var logger = pull.Sink(function (read) {
   read(null, function next(end, data) {
     if(end === true) return
-    if(end) throw err
+    if(end) throw end
 
     console.log(data)
-    readable(end, next)
+    read(null, next)
   })
 })
 ```
